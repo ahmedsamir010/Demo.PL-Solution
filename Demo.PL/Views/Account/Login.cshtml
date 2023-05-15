@@ -1,0 +1,41 @@
+﻿@model LoginViewModel
+@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_AuthLayout.cshtml";
+
+}
+<h2>Login</h2>
+
+<form asp-action="Login" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="form-group">
+        <label asp-for="@Model.Email"></label>
+        <input asp-for="@Model.Email" class="form-control" />
+        <span asp-validation-for="@Model.Email" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="@Model.Password"></label>
+        <input asp-for="@Model.Password" type="password" class="form-control" />
+        <span asp-validation-for="@Model.Password" class="text-danger"></span>
+    </div>
+
+    <div class="form-group form-check">
+        <input asp-for="@Model.RememberMe" class="form-check-input" />
+        <label class="form-check-label" asp-for="@Model.RememberMe">Remember me</label>
+    </div>
+    <button type="submit" class="btn btn-primary">Login</button>
+    <a asp-action="ForgetPassword" asp-controller="Account" class="btn btn-success mx-2">Forget Password</a>
+
+</form>
+<p class="font-italic mt-2">Don`t You have an Account ? <a class="btn btn-success p-2" asp-action="Register">Register Now !! </a></p>
+
+@section validationScriptSection
+    {
+    @* <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+           <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>*@
+
+    <partial name="_ValidationScriptsPartial" />
+
+        }
